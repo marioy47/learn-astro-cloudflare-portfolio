@@ -1,6 +1,23 @@
 ---
 const currentDate: string = new Date().toDateString();
+
+const social = {
+	github: 'marioy47',
+	linkedin: 'in/marioyepes',
+};
+
+interface Props {
+	showSocial: boolean
+}
+
+const { showSocial = true } = Astro.props;
 ---
 <footer>
 	<time>{currentDate}</time>
+	<ul>
+		{ showSocial && Object.keys(social).map( key => {
+			return <li><a href=`https://${key}.com/${social[key]}`>{key}</a></li>;
+		})}
+	</ul>
 </footer>
+
