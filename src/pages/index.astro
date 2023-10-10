@@ -1,8 +1,17 @@
 ---
 import BaseLayout from '../layouts/base-layout.astro';
 const pageTitle: string = `Home`;
+const h1Color: string = `#fff`;
+const h1Bg: string = `#000`;
 ---
 <BaseLayout pageTitle={pageTitle}>
 	<h1>{pageTitle}</h1>
 	<p>Lorem ipsum dolor</p>
 </BaseLayout>
+
+<style define:vars={{h1Color, h1Bg}}>
+	 h1 {
+		color: var(--h1Color);
+		background-color: var(--h1Bg);
+	}
+</style>

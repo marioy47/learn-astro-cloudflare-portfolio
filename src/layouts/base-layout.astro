@@ -1,4 +1,5 @@
 ---
+import '../styles/reboot.min.css';
 import Footer from '../components/footer.astro';
 const { frontmatter, showSocial = true, pageTitle = '' } = Astro.props
 ---
@@ -15,3 +16,9 @@ const { frontmatter, showSocial = true, pageTitle = '' } = Astro.props
 		<Footer showSocial={showSocial}/>
 	</body>
 </html>
+
+<style is:global>
+	body, * {
+		box-sizing: border-box;
+	}
+</style>
