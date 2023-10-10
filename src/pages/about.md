@@ -1,4 +1,5 @@
 ---
+layout: ../layouts/base-layout.astro
 title: About Mario
 ---
 
