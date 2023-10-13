@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/base-layout.astro';
+
+interface FoxesInterface {
+	images: Array<string>,
+	links: Array<string>
+}
+
+const apiUrl: string = 'https://randomfox.ca/api/v1/getfoxes/?count=6';
+let foxes: FoxesInterface = {
+	images: [],
+	links: []
+};
+const res = await fetch(apiUrl);
+if (!res.ok) {
+	console.error('Error status', res.status);
+}
+try {
+	foxes = await res.json();
+} catch(e) {
+	console.error('Error while decoding foxes');
+}
+---
+<BaseLayout>
+	<div class="container">
+		{ res.ok && foxes.images.map( (img, idx) => (
+			<a href={`${foxes.links[idx]}`} target="_blank">
+				<img src={img} width="100%" height={300} />
+			</a>
+		) ) }
+	</div>
+</BaseLayout>
+
+<style>
+.container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+img {
+	object-fit: cover;
+}
+</style>
